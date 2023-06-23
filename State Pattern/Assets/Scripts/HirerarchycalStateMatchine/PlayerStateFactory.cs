@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateFactory : MonoBehaviour
+public class PlayerStateFactory
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerStateMatchine _context;
+
+    public PlayerStateFactory(PlayerStateMatchine currentContext)
     {
-        
+        _context = currentContext;
     }
 
-    // Update is called once per frame
-    void Update()
+    public PlayerBaseState Idle()
     {
-        
+        return new PlayerIdleState(_context, this);
+    }
+
+    public PlayerBaseState Walk()
+    {
+        return new PlayerWalkState(_context, this);
+    }
+
+    public PlayerBaseState Run()
+    {
+        return new PlayerRunState(_context, this);
+    }
+
+    public PlayerBaseState Jump()
+    {
+        return new PlayerJumpState(_context, this);
+    }
+
+    public PlayerBaseState Grounded()
+    {
+        return new PlayerGroundedState(_context, this);
     }
 }
