@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class PlayerStateMatchine : MonoBehaviour
 {
-     
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+
+    }
 }
