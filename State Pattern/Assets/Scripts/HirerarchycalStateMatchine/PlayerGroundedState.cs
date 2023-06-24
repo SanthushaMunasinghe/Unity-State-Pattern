@@ -16,7 +16,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void UpdateState()
     {
-
+        CheckSwitchStates();
     }
 
     public override void ExitState()
@@ -26,7 +26,10 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-
+        if (_ctx.IsJumpPressed)
+        {
+            SwitchState(_factory.Jump());
+        }
     }
 
     public override void InitializeSubState()

@@ -8,8 +8,14 @@ public class PlayerStateMatchine : MonoBehaviour
     PlayerBaseState _currentState;
     PlayerStateFactory _steates;
 
+    //Player Action
+    private bool _isJumpPressed;
+
     //Getters and Setters
     public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+    public bool IsJumpPressed { get { return _isJumpPressed; } set { _isJumpPressed = value; } }
+
+    [SerializeField] private PlayerInputManager playerInputManager;
 
     void Awake()
     {
@@ -21,6 +27,18 @@ public class PlayerStateMatchine : MonoBehaviour
 
     void Update()
     {
+        //Check Inputs
+        CheckJumpPressed();
 
+        //State
+        _currentState.UpdateState();
+    }
+
+    private void CheckJumpPressed()
+    {
+        if (playerInputManager.IsJumpPressed())
+        {
+            _isJumpPressed = true;
+        }
     }
 }
